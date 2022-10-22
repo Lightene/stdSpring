@@ -1,5 +1,7 @@
 package study.core.service.order;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import study.core.model.member.Member;
 import study.core.model.order.Order;
 import study.core.repository.member.MemberRepository;
@@ -8,11 +10,13 @@ import study.core.service.policy.DiscountPolicy;
 import study.core.service.policy.FixDiscountPolicy;
 import study.core.service.policy.RateDiscountPolicy;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
